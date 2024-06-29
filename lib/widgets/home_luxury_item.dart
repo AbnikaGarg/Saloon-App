@@ -27,7 +27,7 @@ class LuxurySection extends StatelessWidget {
                         ),
                         GestureDetector(
                           onTap: () {
-                            Navigator.of(context).pushReplacement(MaterialPageRoute(builder:(context) => const LuxuryViewAllPage() ),);
+                            Navigator.of(context).push(MaterialPageRoute(builder:(context) => const LuxuryViewAllPage() ),);
                           },
                           child:const  Text(
                             'View all',

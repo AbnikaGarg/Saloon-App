@@ -111,7 +111,7 @@ class _ForegetOTPPageState extends State<ForegetOTPPage> {
                 const SizedBox(height: 40),
                 InkWell(
                   onTap: () {
-                    Navigator.pushReplacement(
+                    Navigator.push(
                       context,
                       MaterialPageRoute(
                         builder: (context) => const ResetPasswordPage(),

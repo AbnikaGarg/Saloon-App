@@ -290,7 +290,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                   _nameController.text,
                                   _passwordController.text,
                                   _confirmPasswordController.text);
-                              // Navigator.pushReplacement(
+                              // Navigator.push(
                               //   context,
                               //   MaterialPageRoute(
                               //     builder: (context) =>
@@ -390,7 +390,7 @@ class _SignUpPageState extends State<SignUpPage> {
       if (res.statusCode == 200) { 
         print(res.statusCode);
         await SharedPrefs.saveEmail(email);
-        Navigator.pushReplacement(
+        Navigator.push(
           context,
           MaterialPageRoute(
             builder: (context) => const AskMobileNumberPage(),
@@ -404,7 +404,7 @@ class _SignUpPageState extends State<SignUpPage> {
       }
       if (jsonDecode(res.data)['status'] == 'success') {
         await SharedPrefs.saveEmail(email);
-        Navigator.pushReplacement(
+        Navigator.push(
           context,
           MaterialPageRoute(
             builder: (context) => const AskMobileNumberPage(),

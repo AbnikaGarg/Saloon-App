@@ -3,6 +3,7 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:salon/features/booking_features/service_booking_page.dart';
 
 import 'package:salon/features/home_page.dart';
+import 'package:salon/home_subpages/salon_details.dart';
 import 'package:salon/utils/colors.dart';
 import 'package:salon/widgets/home_items_list.dart';
 
@@ -28,6 +29,7 @@ class SalonViewAllPage extends StatelessWidget {
               ),
               child: Column(
                 children: [
+                  SizedBox(height: 20,),
                   Container(
                     margin: const EdgeInsets.symmetric(
                         horizontal: 16, vertical: 22),
@@ -36,14 +38,9 @@ class SalonViewAllPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Row(children: [
-                          GestureDetector(
+                          InkWell(
                             onTap: () {
-                              Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const HomePage(),
-                                ),
-                              );
+                              Navigator.pop(context);
                             },
                             child: Container(
                                 height: 36,
@@ -121,7 +118,7 @@ class SalonViewAllPage extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(
-                    height: 70,
+                    height: 30,
                   ),
                   Container(
                     height: 50,
@@ -152,143 +149,149 @@ class SalonViewAllPage extends StatelessWidget {
             ),
           ),
           DraggableScrollableSheet(
-            initialChildSize: 0.68,
-            minChildSize: 0.68,
+            initialChildSize: 0.7,
+            minChildSize: 0.7,
+            maxChildSize: 0.7,
+            
             builder:
                 (BuildContext context, ScrollController myScrollController) {
-              return ListView.builder(
-                  controller: myScrollController,
-                  itemCount: 1,
-                  itemBuilder: (context, index) {
-                    return Container(
-                      width: double.infinity,
-                      decoration: const BoxDecoration(
-                          color: Colors.white,
-                          borderRadius:
-                              BorderRadius.vertical(top: Radius.circular(30))),
-                      child: Column(
-                        children: [
-                          const SizedBox(
-                            height: 12,
-                          ),
-                          Center(
-                            child: Container(
-                              height: 5,
-                              width: 40,
-                              decoration: BoxDecoration(
-                                  color: Colors.grey.shade300,
-                                  borderRadius: BorderRadius.circular(20)),
+              return Container(
+                width: double.infinity,
+                decoration: const BoxDecoration(
+                    color: Colors.white,
+                    borderRadius:
+                        BorderRadius.vertical(top: Radius.circular(30))),
+                child: Column(
+                  children: [
+                    const SizedBox(
+                      height: 12,
+                    ),
+                    Center(
+                      child: Container(
+                        height: 5,
+                        width: 40,
+                        decoration: BoxDecoration(
+                            color: Colors.grey.shade400,
+                            borderRadius: BorderRadius.circular(20)),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        child: Column(
+                          children: <Widget>[
+                            const Row(
+                              mainAxisAlignment:
+                                  MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  'Select a Salon',
+                                  style: TextStyle(
+                                      color: AppColors.appbackgroundColor,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ],
                             ),
-                          ),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 16),
-                            child: SizedBox(
-                              child: Column(
-                                children: [
-                                  const Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        'Select a Salon',
-                                        style: TextStyle(
-                                            color: AppColors.appbackgroundColor,
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                    ],
-                                  ),
-                                  const SizedBox(
-                                    height: 10,
-                                  ),
-                                  SizedBox(
-                                    height: 700,
-                                    child: ListView.builder(
-                                        physics:
-                                            const AlwaysScrollableScrollPhysics(),
-                                        shrinkWrap: true,
-                                        itemCount:
-                                            saloonList.data!.salonName!.length,
-                                        scrollDirection: Axis.vertical,
-                                        itemBuilder: (context, index) {
-                                          var saloon = saloonList
-                                              .data!.salonName![index];
-                                          return Container(
-                                            width: 120,
-                                            padding: const EdgeInsets.symmetric(
-                                                vertical: 20),
-                                            child: Column(
-                                              // mainAxisAlignment:
-                                              //     MainAxisAlignment.spaceBetween,
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            Expanded(
+                              child: ListView.builder(
+                                
+                                  // physics:
+                                  //     const AlwaysScrollableScrollPhysics(),
+                                  shrinkWrap: true,
+                                  padding: EdgeInsets.zero,
+                                 // primary: false,
+                                  itemCount:
+                                      saloonList.data!.salonName!.length,
+                                  scrollDirection: Axis.vertical,
+                                  itemBuilder: (context, index) {
+                                    var saloon =
+                                        saloonList.data!.salonName![index];
+                                    return InkWell(
+                                      onTap: () {
+                                        //SalonView
+                                      
+                         
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const SalonView(),
+                                ),
+                              );
+                            
+                                      },
+                                      child: Container(
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 20),
+                                        child: Column(
+                                          // mainAxisAlignment:
+                                          //     MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Row(
                                               children: [
-                                                Row(
-                                                  children: [
-                                                    Container(
-                                                      width: 120,
-                                                      height: 90,
-                                                      decoration: BoxDecoration(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(5),
-                                                        color: Colors.grey,
-                                                        image: DecorationImage(
-                                                            image: AssetImage(index <
-                                                                    6
-                                                                ? salonListItem[
-                                                                        index]
-                                                                    .imageUrl
-                                                                : salonListItem[
-                                                                        salonListItem.length -
-                                                                            1]
-                                                                    .imageUrl),
-                                                            fit: BoxFit.fill),
+                                                Container(
+                                                  width: 120,
+                                                  height: 90,
+                                                  decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            5),
+                                                    color: Colors.grey,
+                                                    image: DecorationImage(
+                                                        image: AssetImage(index <
+                                                                6
+                                                            ? salonListItem[
+                                                                    index]
+                                                                .imageUrl
+                                                            : salonListItem[
+                                                                    salonListItem
+                                                                            .length -
+                                                                        1]
+                                                                .imageUrl),
+                                                        fit: BoxFit.fill),
+                                                  ),
+                                                ),
+                                                const SizedBox(width: 12),
+                                                Flexible(
+                                                  child: Column(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment.start,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      Text(
+                                                        saloon.name!,
+                                                        style: const TextStyle(
+                                                          fontSize: 14,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          color: AppColors
+                                                              .appbackgroundColor,
+                                                        ),
                                                       ),
-                                                    ),
-                                                    //  const  SizedBox(width:8),
-                                                    Container(
-                                                      width: 130,
-
-                                                      // padding: const EdgeInsets.symmetric(horizontal: 4),
-                                                      margin: const EdgeInsets
-                                                          .symmetric(
-                                                          horizontal: 18),
-                                                      child: Column(
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .start,
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .start,
+                                                      Text(
+                                                        saloon.address!,
+                                                        style: const TextStyle(
+                                                          fontSize: 14,
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                          color: AppColors
+                                                              .appbackgroundColor,
+                                                        ),
+                                                        maxLines: 1,
+                                                        overflow: TextOverflow.ellipsis,
+                                                      ),
+                                                      const SizedBox(height:6),
+                                                      Row(
+                                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                         children: [
-                                                          Text(
-                                                            saloon.name!,
-                                                            style:
-                                                                const TextStyle(
-                                                              fontSize: 14,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold,
-                                                              color: AppColors
-                                                                  .appbackgroundColor,
-                                                            ),
-                                                          ),
-                                                          Text(
-                                                            saloon.address!,
-                                                            style:
-                                                                const TextStyle(
-                                                              fontSize: 14,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w400,
-                                                              color: AppColors
-                                                                  .appbackgroundColor,
-                                                            ),
-                                                          ),
-                                                          const SizedBox(
-                                                              height: 8),
                                                           RatingBar.builder(
                                                             initialRating: 4,
                                                             minRating: 1,
@@ -311,62 +314,6 @@ class SalonViewAllPage extends StatelessWidget {
                                                             onRatingUpdate:
                                                                 (index) {},
                                                           ),
-                                                          const SizedBox(
-                                                              height: 6),
-                                                          const Text( 
-                                                            "09:00 am - 09:00 am",
-                                                            style: TextStyle(
-                                                                fontSize: 12,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w600,
-                                                                color: AppColors
-                                                                    .appbackgroundColor),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                    Container(
-                                                      padding:
-                                                          const EdgeInsets.only(
-                                                              left: 4),
-                                                      height: 90,
-                                                      child: Column(
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .spaceBetween,
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .end, 
-                                                        children: [
-                                                          // Row(
-                                                          //   children: [
-                                                          //     const Icon(
-                                                          //       Icons
-                                                          //           .location_on,
-                                                          //       size: 12,
-                                                          //       color: AppColors
-                                                          //           .appbackgroundColor,
-                                                          //     ),
-                                                          //     const SizedBox(
-                                                          //       width: 2,
-                                                          //     ),
-                                                          //     Text(
-                                                          //       luxuryListItem[
-                                                          //               index]
-                                                          //           .distance,
-                                                          //       style:
-                                                          //           const TextStyle(
-                                                          //         fontSize: 14,
-                                                          //         fontWeight:
-                                                          //             FontWeight
-                                                          //                 .w500,
-                                                          //         color: AppColors
-                                                          //             .appbackgroundColor,
-                                                          //       ),
-                                                          //     ),
-                                                          //   ],
-                                                          // ),
                                                           InkWell(
                                                             onTap: () {
                                                               Navigator.push(
@@ -381,8 +328,8 @@ class SalonViewAllPage extends StatelessWidget {
                                                             child: Container(
                                                               // // padding: const EdgeInsets.all(32),
                                                               // margin: const EdgeInsets.symmetric(horizontal: 30),
-                                                              height: 30,
-                                                              width: 60,
+                                                              height: 20,
+                                                              width: 50,
                                                               decoration: const BoxDecoration(
                                                                   color: AppColors
                                                                       .appbackgroundColor,
@@ -399,7 +346,7 @@ class SalonViewAllPage extends StatelessWidget {
                                                                     color: Colors
                                                                         .white,
                                                                     fontSize:
-                                                                        14,
+                                                                        12,
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .w600),
@@ -408,22 +355,77 @@ class SalonViewAllPage extends StatelessWidget {
                                                           ),
                                                         ],
                                                       ),
-                                                    ),
-                                                  ],
+                                                      const SizedBox(height: 2),
+                                                      const Text(
+                                                        "09:00 am - 09:00 am",
+                                                        style: TextStyle(
+                                                            fontSize: 12,
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                            color: AppColors
+                                                                .appbackgroundColor),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                                Container(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          left: 4),
+                                                  height: 90,
+                                                  child: Column(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment.end,
+                                                    children: [
+                                                      // Row(
+                                                      //   children: [
+                                                      //     const Icon(
+                                                      //       Icons
+                                                      //           .location_on,
+                                                      //       size: 12,
+                                                      //       color: AppColors
+                                                      //           .appbackgroundColor,
+                                                      //     ),
+                                                      //     const SizedBox(
+                                                      //       width: 2,
+                                                      //     ),
+                                                      //     Text(
+                                                      //       luxuryListItem[
+                                                      //               index]
+                                                      //           .distance,
+                                                      //       style:
+                                                      //           const TextStyle(
+                                                      //         fontSize: 14,
+                                                      //         fontWeight:
+                                                      //             FontWeight
+                                                      //                 .w500,
+                                                      //         color: AppColors
+                                                      //             .appbackgroundColor,
+                                                      //       ),
+                                                      //     ),
+                                                      //   ],
+                                                      // ),
+                                                    ],
+                                                  ),
                                                 ),
                                               ],
                                             ),
-                                          );
-                                        }),
-                                  ),
-                                ],
-                              ),
+                                          ],
+                                        ),
+                                      ),
+                                    );
+                                  }),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    );
-                  });
+                    ),
+                  ],
+                ),
+              );
             },
           ),
         ],

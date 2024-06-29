@@ -140,7 +140,7 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
                         InkWell(
                           onTap: () {
                             if (_formkey.currentState!.validate()) {
-                              Navigator.pushReplacement(
+                              Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) =>

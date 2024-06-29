@@ -4,4 +4,5 @@ class APIEndPoints{
   static String verifyOTP="https://ontimesalon.com/api/otp_verify.php";
   static String saloonList="https://ontimesalon.com/api/Salon_list.php";
   static String searchSaloon="https://ontimesalon.com/api/Search_Salon.php";
+   static String address="https://ontimesalon.com/api/Payment_AddressList.php";
 }

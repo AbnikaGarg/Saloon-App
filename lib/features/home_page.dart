@@ -45,9 +45,13 @@ class _HomePageState extends State<HomePage> {
     var response = await http.post(Uri.parse(APIEndPoints.saloonList));
     print("succc");
 
-    if (response.statusCode == 200) {}
+    if (response.statusCode == 200) {
     print("succc");
     return SaloonListResponse.fromJson(jsonDecode(response.body));
+    }
+    else{
+      return saloonLists;
+    }
   }
 
   // final GlobalKey<ScaffoldState> _scaffoldKey2 = GlobalKey<ScaffoldState>();

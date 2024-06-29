@@ -26,7 +26,7 @@ class Services extends StatelessWidget {
                         ),
                         GestureDetector(
                            onTap: () {
-                            Navigator.of(context).pushReplacement(MaterialPageRoute(builder:(context) => const ServiceViewAllPage() ),);
+                            Navigator.of(context).push(MaterialPageRoute(builder:(context) => const ServiceViewAllPage() ),);
                           },
                           child:const  Text(
                             'View all',
